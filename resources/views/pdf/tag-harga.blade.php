@@ -59,6 +59,10 @@
                 <td>
                     @if($label)
 
+                        <div>
+                            <img src="data:image/png;base64,{{ $label->barcode }}" style="height:18px;">
+                        </div>
+
                         <div class="nama">
                             {{ $label->nama_barang }}
                         </div>

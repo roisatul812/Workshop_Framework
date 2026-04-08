@@ -12,6 +12,7 @@ use App\Http\Controllers\PesananController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CustomerController;
 
 Auth::routes();
 
@@ -106,4 +107,18 @@ Route::middleware('auth')->group(function(){
     Route::get('/transaksi', [PesananController::class,'transaksi']);
 
     Route::post('/midtrans/callback', [PaymentController::class,'callback']);
+});
+
+Route::middleware('auth')->group(function(){
+
+Route::get('/customer', [CustomerController::class,'index']);
+Route::get('/customer/create1', [CustomerController::class,'create1']);
+Route::get('/customer/create2', [CustomerController::class,'create2']);
+Route::post('/customer/store1', [CustomerController::class,'store1']);
+Route::post('/customer/store2', [CustomerController::class,'store2']);
+
+});
+
+Route::get('/scan', function () {
+    return view('qr.scan');
 });

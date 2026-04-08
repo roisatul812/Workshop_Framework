@@ -27,13 +27,28 @@
                     Bayar Sekarang
                 </button>
 
+                <hr>
+
+                <div class="text-center mt-4">
+
+                    <h5>QR Code Pesanan</h5>
+
+                    {!! QrCode::size(200)->generate($pesanan->id) !!}
+
+                    <p class="mt-2">
+                        Scan QR ini untuk verifikasi pesanan
+                    </p>
+
+                </div>
+
             </div>
         </div>
 
     </div>
 
 
-    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}"> </script>
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.clientKey') }}">
+    </script>
 
 
     <script>

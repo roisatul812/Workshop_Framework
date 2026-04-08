@@ -97,6 +97,13 @@
                 <i class="menu-icon mdi mdi-cash"></i>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/customer">
+                <span class="menu-title">Customer</span>
+                <i class="menu-icon mdi mdi-account"></i>
+            </a>
+        </li>
     </ul>
 
 </nav>
