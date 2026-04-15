@@ -33,7 +33,8 @@
 
                         <br>
 
-                        <video id="video" width="320" height="240" autoplay style="border:1px solid #ccc"></video>
+                        <video id="video" width="320" height="240" autoplay
+                            style="border:1px solid #ccc; transform: scaleX(-1);"></video>
 
                         <br><br>
 
@@ -82,7 +83,12 @@
             const canvas = document.getElementById('canvas');
             const context = canvas.getContext('2d');
 
+            context.translate(canvas.width, 0);
+            context.scale(-1, 1);
+
             context.drawImage(video, 0, 0, 320, 240);
+
+            context.setTransform(1, 0, 0, 1, 0, 0);
 
             let dataURL = canvas.toDataURL("image/png");
 
