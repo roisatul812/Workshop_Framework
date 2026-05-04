@@ -104,6 +104,13 @@
                 <i class="menu-icon mdi mdi-account"></i>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/scan">
+                <span class="menu-title">Scan QR Code</span>
+                <i class="menu-icon mdi mdi-qrcode-scan"></i>
+            </a>
+        </li>
     </ul>
 
 </nav>
