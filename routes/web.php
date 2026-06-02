@@ -15,6 +15,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\KunjunganController;
+use App\Http\Controllers\AntrianController;
 
 Auth::routes();
 
@@ -138,4 +139,27 @@ Route::get('/barcode/{kode}', function ($kode) {
     $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
     $barcode = $generator->getBarcode($kode, \Picqer\Barcode\BarcodeGeneratorPNG::TYPE_CODE_128);
     return response($barcode)->header('Content-Type', 'image/png');
+});
+
+// Antrian — publik
+Route::get('/guest', [AntrianController::class, 'guest'])->name('antrian.guest');
+Route::post('/guest/daftar', [AntrianController::class, 'daftar'])->name('antrian.daftar');
+Route::get('/tiket/{id}', [AntrianController::class, 'tiket'])->name('antrian.tiket');
+Route::get('/papan-antrian', [AntrianController::class, 'papan'])->name('antrian.papan');
+Route::get('/sse/antrian', [AntrianController::class, 'stream'])->name('antrian.stream');
+
+// Antrian — admin (perlu login)
+Route::middleware('auth')->group(function () {
+    Route::get('/antrian-admin', [AntrianController::class, 'admin'])->name('antrian.admin');
+    Route::post('/antrian/panggil', [AntrianController::class, 'panggil'])->name('antrian.panggil');
+    Route::post('/antrian/terlambat', [AntrianController::class, 'terlambat'])->name('antrian.terlambat');
+    Route::post('/antrian/panggil-terlambat', [AntrianController::class, 'panggilTerlambat'])->name('antrian.panggilTerlambat');
+    Route::post('/antrian/reset', [AntrianController::class, 'reset'])->name('antrian.reset');
+});
+
+Route::get('/antrian/status', function () {
+    $dipanggil = \Cache::get('antrian_dipanggil', null);
+    return response()->json([
+        'dipanggil' => $dipanggil,
+    ]);
 });

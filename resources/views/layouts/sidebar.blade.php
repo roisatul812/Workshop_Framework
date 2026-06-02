@@ -119,6 +119,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('antrian.admin') }}">
+                <span class="menu-title">Kelola Antrian</span>
+                <i class="mdi mdi-account-group menu-icon"></i>
+            </a>
+        </li>
+
     </ul>
 
 </nav>
