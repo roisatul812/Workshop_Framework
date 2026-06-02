@@ -14,6 +14,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ScanController;
+use App\Http\Controllers\KunjunganController;
 
 Auth::routes();
 
@@ -125,3 +126,16 @@ Route::get('/scan', function () {
 });
 
 Route::get('/scan-all/{id}', [ScanController::class, 'scanAll']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/kunjungan-toko', [KunjunganController::class, 'index'])->name('kunjungan.index');
+    Route::post('/kunjungan-toko/store-toko', [KunjunganController::class, 'storeToko'])->name('kunjungan.storeToko');
+    Route::get('/kunjungan-toko/get-toko', [KunjunganController::class, 'getToko'])->name('kunjungan.getToko');
+    Route::post('/kunjungan-toko/store-kunjungan', [KunjunganController::class, 'storeKunjungan'])->name('kunjungan.storeKunjungan');
+});
+
+Route::get('/barcode/{kode}', function ($kode) {
+    $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+    $barcode = $generator->getBarcode($kode, \Picqer\Barcode\BarcodeGeneratorPNG::TYPE_CODE_128);
+    return response($barcode)->header('Content-Type', 'image/png');
+});

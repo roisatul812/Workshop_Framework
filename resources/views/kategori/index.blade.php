@@ -2,72 +2,69 @@
 
 @section('content')
 
-<div class="card">
-<div class="card-body">
+    <div class="card">
+        <div class="card-body">
 
-<h2 class="card-title">Data Kategori</h2>
+            <h2 class="card-title">Data Kategori</h2>
 
-<div class="d-flex justify-content-end mb-3">
-<a href="/kategori/create" class="btn btn-gradient-primary">
-Tambah Kategori
-</a>
-</div>
+            <div class="d-flex justify-content-end mb-3">
+                <a href="/kategori/create" class="btn btn-gradient-primary">
+                    Tambah Kategori
+                </a>
+            </div>
 
-<div class="table-responsive">
+            <div class="table-responsive">
 
-<table class="table table-bordered">
+                <table class="table table-bordered">
 
-<thead>
-<tr>
-<th>No</th>
-<th>Nama Kategori</th>
-<th>Aksi</th>
-</tr>
-</thead>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Kategori</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
 
-<tbody>
+                    <tbody>
 
-@foreach($kategori as $k)
+                        @foreach($kategori as $k)
 
-<tr>
+                            <tr>
 
-<td>{{ $loop->iteration }}</td>
+                                <td>{{ $loop->iteration }}</td>
 
-<td>{{ $k->nama_kategori }}</td>
+                                <td>{{ $k->nama_kategori }}</td>
 
-<td>
+                                <td>
 
-<a href="/kategori/{{ $k->id }}/edit"
-class="btn btn-warning btn-sm">
-Edit
-</a>
+                                    <a href="/kategori/{{ $k->id }}/edit" class="btn btn-warning btn-sm">
+                                        Edit
+                                    </a>
 
-<form action="/kategori/{{ $k->id }}"
-method="POST"
-style="display:inline">
+                                    <form action="/kategori/{{ $k->id }}" method="POST" style="display:inline">
 
-@csrf
-@method('DELETE')
+                                        @csrf
+                                        @method('DELETE')
 
-<button class="btn btn-danger btn-sm">
-Delete
-</button>
+                                        <button class="btn btn-danger btn-sm">
+                                            Delete
+                                        </button>
 
-</form>
+                                    </form>
 
-</td>
+                                </td>
 
-</tr>
+                            </tr>
 
-@endforeach
+                        @endforeach
 
-</tbody>
+                    </tbody>
 
-</table>
+                </table>
 
-</div>
+            </div>
 
-</div>
-</div>
+        </div>
+    </div>
 
 @endsection

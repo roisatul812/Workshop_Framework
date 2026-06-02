@@ -20,6 +20,7 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
 
+    @stack('styles')
 </head>
 
 <body>
@@ -84,6 +85,7 @@
     <!-- dashboard -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
 
+    @stack('scripts')
 </body>
 
 </html>

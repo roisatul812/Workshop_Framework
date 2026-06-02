@@ -111,6 +111,14 @@
                 <i class="menu-icon mdi mdi-qrcode-scan"></i>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('kunjungan.index') }}">
+                <span class="menu-title">Kunjungan Toko</span>
+                <i class="mdi mdi-map-marker-radius menu-icon"></i>
+            </a>
+        </li>
+
     </ul>
 
 </nav>
