@@ -16,6 +16,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ScanController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\NfcController;
 
 Auth::routes();
 
@@ -162,4 +163,12 @@ Route::get('/antrian/status', function () {
     return response()->json([
         'dipanggil' => $dipanggil,
     ]);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/nfc', [NfcController::class, 'index'])->name('nfc.index');
+    Route::post('/nfc/mahasiswa', [NfcController::class, 'storeMahasiswa'])->name('nfc.storeMahasiswa');
+    Route::post('/nfc/daftar-kartu', [NfcController::class, 'daftarKartu'])->name('nfc.daftarKartu');
+    Route::post('/nfc/scan', [NfcController::class, 'scan'])->name('nfc.scan');
+    Route::get('/nfc/mahasiswa/delete/{id}', [NfcController::class, 'deleteMahasiswa'])->name('nfc.deleteMahasiswa');
 });

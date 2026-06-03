@@ -1,4 +1,8 @@
 <IfModule mod_rewrite.c>
+<IfModule mod_headers.c>
+    Header set ngrok-skip-browser-warning "true"
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
@@ -26,5 +30,5 @@
 <IfModule mod_headers.c>
     Header set X-Accel-Buffering "no"
     Header set Cache-Control "no-cache"
-    
+
 </IfModule>

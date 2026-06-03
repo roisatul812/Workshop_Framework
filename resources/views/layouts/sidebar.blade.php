@@ -126,6 +126,13 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('nfc.index') }}">
+                <span class="menu-title">Absensi NFC</span>
+                <i class="mdi mdi-nfc menu-icon"></i>
+            </a>
+        </li>
+
     </ul>
 
 </nav>
